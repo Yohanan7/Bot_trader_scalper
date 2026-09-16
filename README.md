@@ -1,0 +1,1 @@
+# Bot_trader_scalper
