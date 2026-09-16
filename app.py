@@ -4,7 +4,7 @@ import requests
 import streamlit as st
 import google.generativeai as genai
 
-st.set_page_config(page_title="Dashboard Scalper XAU/USD", page_icon="📈", layout="wide")
+st.set_page_config(page_title=" Scalper XAU/USD", page_icon="📈", layout="wide")
 
 # --- INITIALISATION DE LA MÉMOIRE DU BOT ---
 if "base_lot" not in st.session_state:
@@ -17,11 +17,18 @@ if "trade_history" not in st.session_state:
     st.session_state.trade_history = []
 
 # Configuration de la clé API Gemini
+# --- RÉCUPÉRATION DES VARIABLES D'ENVIRONNEMENT RENDER ---
 GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+EXNESS_LOGIN = os.getenv("MT5_LOGIN")
+EXNESS_PASSWORD = os.getenv("MT5_PASSWORD")
+EXNESS_SERVER = os.getenv("MT5_SERVER")  # <-- Lecture automatique du serveur Exness
+    
+#GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+
 if GEMINI_KEY:
     genai.configure(api_key=GEMINI_KEY)
 
-st.title("⚡ Dashboard Bot Scalper XAU/USD — Gestion Dynamique du Lot")
+st.title("⚡ Bot Scalper XAU/USD — Gestion Dynamique du Lot")
 
 # --- BARRE LATÉRALE : CONFIGURATION ---
 st.sidebar.header("⚙️ Configuration du Lot")
